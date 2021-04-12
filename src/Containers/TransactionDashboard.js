@@ -18,16 +18,17 @@ const chart2 = sdk.createChart({
 });
 
 
-class MyChart extends React.Component {
+class TransactionDashboard extends React.Component {
   constructor(props) {
       super(props);
 
-      this.state = {filterTitle: "Kein Filter"}
+      this.state = {filterTitle: "Kein Filter ausgewählt"}
   }
 
   async componentDidMount() {
     await chart1.render(document.getElementById("mongochart1"));
     await chart2.render(document.getElementById("mongochart2"));
+
     await chart1.addEventListener("click", (payload) => {
         if (payload.target.role === "mark") {
           chart2.setFilter(payload.selectionFilter);
@@ -58,4 +59,4 @@ class MyChart extends React.Component {
   }
 } 
 
-export default MyChart;
+export default TransactionDashboard;
